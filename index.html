@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kitbull — история про котёнка и пса</title>
+<meta name="description" content="Kitbull от Pixar: сюжет, герои, смысл, создание и награды.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;800&family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1f7; --panel:#e0e6f2; --fg:#14203a; --mute:#4a5878; --accent:#b84a0a; --line:#b9c3da; --nav:rgba(238,241,247,.92);
+  --night:#0c1626; --lamp:#ffb347; --on-night:#e8edf6;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1b2d;--panel:#16263f;--fg:#e8edf6;--mute:#a4b0cb;--accent:#ffb347;--line:#2b3f63;--nav:rgba(15,27,45,.92)}}
+:root[data-theme="dark"]{--bg:#0f1b2d;--panel:#16263f;--fg:#e8edf6;--mute:#a4b0cb;--accent:#ffb347;--line:#2b3f63;--nav:rgba(15,27,45,.92)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.08rem/1.7 Onest,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nav);backdrop-filter:blur(8px)}
+h1,h2,h3{font-family:'Montserrat Alternates',Onest,sans-serif;margin:0;line-height:1.1}
+p{max-width:64ch;margin:0 0 1.1em}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border-radius:16px}
+figcaption{font-size:.88rem;color:var(--mute);margin-top:8px}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--nav);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:24px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
+nav b{font:800 1.05rem 'Montserrat Alternates',sans-serif;margin-right:auto}
+nav a{color:var(--mute);text-decoration:none;font-weight:500;font-size:.94rem}
+nav a:hover{color:var(--accent)}
+
+.hero{position:relative;overflow:hidden;color:var(--on-night);min-height:calc(100svh - 56px);display:flex;align-items:flex-end;
+  background:linear-gradient(180deg,rgba(12,22,38,.2) 0%,rgba(12,22,38,.55) 55%,rgba(12,22,38,.95) 100%),url(images/kitbull-4.webp) center/cover #0c1626}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle 260px at var(--mx,70%) var(--my,40%),rgba(255,179,71,.26),transparent 70%)}
+.hero .wrap{position:relative;padding-bottom:9vh;padding-top:30vh}
+.hero h1{font-size:clamp(3.6rem,15vw,9.5rem);font-weight:800;letter-spacing:-.04em;animation:rise 1s .1s both cubic-bezier(.2,.8,.2,1)}
+.hero p{font-size:clamp(1.1rem,2.2vw,1.4rem);max-width:36ch;color:#c9d3ea;margin:14px 0 0;animation:rise 1s .3s both cubic-bezier(.2,.8,.2,1)}
+.cta{display:inline-block;margin-top:26px;background:var(--lamp);color:#1a1226;padding:13px 26px;border-radius:999px;font-weight:700;text-decoration:none;animation:rise 1s .5s both cubic-bezier(.2,.8,.2,1)}
+.cta:hover{background:#ffc873}
+.cta.ghost{background:transparent;color:var(--on-night);border:2px solid var(--on-night);padding:11px 24px;margin-left:12px}
+.cta.ghost:hover{background:rgba(255,255,255,.14)}
+.watch{text-align:center}
+.watch p{margin-left:auto;margin-right:auto}
+.watch .cta{animation:none;font-size:1.15rem;padding:16px 34px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+
+section{padding:92px 0}
+h2{font-size:clamp(1.8rem,4.4vw,2.9rem);margin-bottom:22px;font-weight:800}
+.alt{background:var(--panel)}
+.split{display:grid;grid-template-columns:5fr 4fr;gap:60px;align-items:start}
+dl{margin:0;background:var(--panel);border-radius:20px;padding:8px 26px}
+.alt dl{background:var(--bg)}
+dl div{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}
+dl div:last-child{border:0}
+dt{color:var(--mute);font-size:.95rem}
+dd{margin:0;font-weight:700;text-align:right}
+
+.chars{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.chars h3{font-size:1.6rem;margin:20px 0 10px;color:var(--accent)}
+.chars p{color:var(--fg)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin:34px 0 8px}
+
+details{margin-top:30px;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:18px 24px}
+.alt details{background:var(--bg)}
+summary{cursor:pointer;font:700 1.05rem 'Montserrat Alternates',sans-serif}
+details[open]{border-color:var(--accent)}
+ol.steps{margin:20px 0 0;padding:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 22px 52px;max-width:64ch}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--bg);font:800 .95rem/34px 'Montserrat Alternates',sans-serif;text-align:center}
+ol.steps b{display:block;font-family:'Montserrat Alternates',sans-serif}
+ol.steps span{color:var(--mute)}
+
+.meaning{display:grid;grid-template-columns:4fr 7fr;gap:60px}
+.sticky{position:sticky;top:calc(90px + env(safe-area-inset-top,0px));align-self:start}
+.sticky p{color:var(--mute)}
+.theme{padding:28px 0;border-top:1px solid var(--line)}
+.theme:first-child{border-top:0;padding-top:0}
+.theme h3{font-size:clamp(1.25rem,2.6vw,1.7rem);margin-bottom:8px;color:var(--accent)}
+.theme p{margin:0}
+
+.when{list-style:none;margin:34px 0 0;padding:0;border-left:3px solid var(--line)}
+.when li{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:0 0 22px 24px;position:relative}
+.when li::before{content:"";position:absolute;left:-9px;top:.5em;width:15px;height:15px;border-radius:50%;background:var(--accent)}
+.when b{font-family:'Montserrat Alternates',sans-serif}
+.when span{color:var(--mute)}
+
+footer{padding:48px 0 72px;border-top:1px solid var(--line);color:var(--mute);font-size:.9rem}
+:focus-visible{outline:3px solid var(--lamp);outline-offset:3px}
+@media (max-width:800px){.split,.meaning,.chars,.pair{grid-template-columns:1fr;gap:30px}.sticky{position:static}section{padding:62px 0}.when li{grid-template-columns:1fr;gap:2px}.hero .wrap{padding-top:22vh}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero p,.cta{animation:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap"><b>Kitbull</b><a href="#about">О мультфильме</a><a href="#heroes">Герои</a><a href="#story">Сюжет</a><a href="#meaning">Смысл</a><a href="#making">Создание</a><a href="#path">Путь и награды</a><a href="#watch">Смотреть</a></div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Kitbull</h1>
+    <p>Девять минут без слов о бездомном котёнке, псе на цепи и о том, как рождается доверие.</p>
+    <a class="cta" href="#heroes">Познакомиться с героями</a>
+    <a class="cta ghost" href="https://vkvideo.ru/video-230238587_456239202" target="_blank" rel="noopener noreferrer">▶ Смотреть мультфильм</a>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap split">
+    <div>
+      <h2>О мультфильме</h2>
+      <p>Бездомный котёнок прячется в закоулках города: колючий, осторожный, привыкший рассчитывать только на себя. За домом на цепи держат питбуля. Хозяин использует его для собачьих боёв, и пёс научился выглядеть грозно.</p>
+      <p>Казалось бы, им не о чем договариваться. Но котёнок слишком любопытный, а пёс слишком одинокий. Дальше история идёт без единого слова: всё рассказывают движения, взгляды, шорохи и музыка.</p>
+      <p>Kitbull быстро стал вирусным: фильм посмотрели сотни миллионов раз, а в 2020 году он получил номинацию на «Оскар».</p>
+    </div>
+    <dl>
+      <div><dt>Студия</dt><dd>Pixar Animation Studios</dd></div>
+      <div><dt>Программа</dt><dd>SparkShorts, третий фильм</dd></div>
+      <div><dt>Год</dt><dd>2019</dd></div>
+      <div><dt>Длительность</dt><dd>9 минут</dd></div>
+      <div><dt>Формат</dt><dd>Рисованная 2D, без диалогов</dd></div>
+      <div><dt>Где смотреть</dt><dd>YouTube Pixar, Disney+</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="alt" id="heroes">
+  <div class="wrap">
+    <h2>Герои</h2>
+    <p>Двое главных героев почти не похожи друг на друга: один маленький, чёрный и взъерошенный, другой большой, светлый и тяжёлый. Контраст виден в каждом кадре.</p>
+    <div class="chars" style="margin-top:34px">
+      <div>
+        <figure><img src="images/kitbull-1.webp" alt="Чёрный котёнок с огромными глазами стоит на снегу рядом с оранжевой крышкой" loading="lazy"><figcaption>Котёнок и его оранжевая крышка. Кадр из мультфильма, © Pixar.</figcaption></figure>
+        <h3>Котёнок</h3>
+        <p>Чёрный, лохматый, с глазами на пол-лица. Самостоятельный до упрямства: живёт в мусорных баках и картонных коробках, еду добывает сам и не подпускает к себе людей. Создатели намеренно нарисовали его очень «мультяшным», почти абстрактным: он дёрганый и непредсказуемый, как настоящий котёнок.</p>
+        <p>Его главная игрушка — оранжевая крышка от бутылки. Именно вокруг неё впервые завязывается контакт с псом.</p>
+      </div>
+      <div>
+        <figure><img src="images/kitbull-2.webp" alt="Светлый питбуль со шрамами смотрит вниз, у его лап сидит маленький чёрный котёнок" loading="lazy"><figcaption>Пёс и котёнок рядом. Кадр из мультфильма, © Pixar.</figcaption></figure>
+        <h3>Пёс</h3>
+        <p>Светлый питбуль, которого перевезли в будку за домом и посадили на цепь. Шрамы на морде и теле рассказывают о его жизни лучше любых слов. Он грозен снаружи, а внутри добродушный и игривый: как только его оставляют в покое, он валяется на спине и дурачится, как щенок.</p>
+        <p>В саундтреке трек про него называется Meet Pit, так что многие зрители зовут его Питом.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <h2>Как складывается дружба</h2>
+    <p>Фильм не торопится. Сначала котёнок держится на расстоянии, потом любопытство побеждает страх, и всё решает игра: крышка от бутылки, прыжки, возня в пыли.</p>
+    <div class="pair">
+      <figure><img src="images/kitbull-3.webp" alt="Пёс лежит на спине у стены с граффити, к нему подползает котёнок" loading="lazy"><figcaption>Пёс переворачивается на спину, котёнок подкрадывается. © Pixar.</figcaption></figure>
+      <figure><img src="images/kitbull-5.webp" alt="Пёс радостно играет с котёнком на улице у стены с граффити" loading="lazy"><figcaption>Первая настоящая игра. © Pixar.</figcaption></figure>
+    </div>
+    <details>
+      <summary>Пересказ сюжета по сценам (спойлеры)</summary>
+      <ol class="steps">
+        <li><b>Мусорные баки</b><span>Котёнок живёт за зданием в Мишн-Дистрикте Сан-Франциско. Прохожая предлагает ему еду, но он убегает.</span></li>
+        <li><b>Новый сосед</b><span>За домом появляется питбуль: его сажают на цепь у будки. Котёнок сначала смертельно его боится.</span></li>
+        <li><b>Крышка</b><span>Игра с бутылочной крышкой впервые сближает их.</span></li>
+        <li><b>Тяжёлая ночь</b><span>Пёс возвращается из драки сильно раненым, и его выбрасывают обратно на улицу.</span></li>
+        <li><b>Шторм</b><span>Котёнок запутывается в пластиковых кольцах. Пёс пытается помочь, но напуганный малыш царапает его.</span></li>
+        <li><b>Утешение</b><span>Огорчённый пёс уходит в будку. Котёнок приходит к нему и остаётся рядом.</span></li>
+        <li><b>Побег</b><span>На следующий день они убегают со двора до того, как их заметит хозяин.</span></li>
+        <li><b>Новый дом</b><span>Женщина из первой сцены находит котёнка с псом, пугается, но видит, как они привязаны друг к другу, и вместе с мужем забирает обоих. Финал разворачивается на холме Бернал с видом на город.</span></li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<section class="alt" id="meaning">
+  <div class="wrap meaning">
+    <div class="sticky">
+      <h2>О чём она на самом деле</h2>
+      <p>Сюжет простой, а смысл многослойный. Вот главное, что можно из неё вынести.</p>
+    </div>
+    <div>
+      <div class="theme"><h3>Не суди по ярлыку</h3><p>Питбуль выглядит как угроза, но на деле он напуган и измучен. Его агрессия работает как броня. Фильм просит сначала присмотреться, а потом делать выводы.</p></div>
+      <div class="theme"><h3>Опасны не собаки, а люди</h3><p>Режиссёр рассказывала, что в студенческие годы работала в приютах и видела, какими ласковыми бывают питбули, и одновременно слышала об их плохой репутации. Фильм показывает: зло в этой истории исходит от человека, который держит пса на цепи и заставляет драться.</p></div>
+      <div class="theme"><h3>Сила не в размере</h3><p>Котёнок крошечный, но именно он первым делает шаг навстречу. Смелость здесь важнее роста и веса.</p></div>
+      <div class="theme"><h3>Доверие приходит маленькими шагами</h3><p>Нет громких признаний: сначала осторожный взгляд, потом общая игра, потом тёплое соседство. Дружба строится медленно, поэтому в неё веришь. Даже царапина не ломает её: котёнок возвращается.</p></div>
+      <div class="theme"><h3>Страх остаться уязвимым</h3><p>Для самой Росаны Салливан история про застенчивость. Котёнок выбирает одиночество, потому что рядом с другими можно пораниться. Фильм говорит: выйти из зоны комфорта страшно, но именно так находят близких.</p></div>
+      <div class="theme"><h3>Дом — это тот, кто рядом</h3><p>Для обоих героев дом не крыша и не адрес, а существо, рядом с которым можно перестать защищаться. Название склеено из двух слов: kit(ten) и (pit) bull, то есть котёнок и питбуль.</p></div>
+      <div class="theme"><h3>Слова не нужны</h3><p>Отсутствие диалогов часть замысла. Чувства считываются без перевода, поэтому история одинаково понятна детям и взрослым в любой стране.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="making">
+  <div class="wrap split">
+    <div>
+      <h2>Как это сделано</h2>
+      <p>Идея выросла из рисунков чёрного котёнка, которые Росана Салливан делала ещё в 2013 году. Толчком стало видео, где кошка важно выгибает спину и тут же падает со стола. Из шутки получилась личная история об одиночестве и доверии. Вместе с продюсером Кэтрин Хендриксон они начали работу в нерабочее время, ещё до запуска SparkShorts.</p>
+      <p>Когда Pixar создал программу SparkShorts, проект получил дом. Сотрудникам давали шесть месяцев и ограниченный бюджет, у Kitbull он был примерно в пять раз меньше, чем у обычных театральных короткометражек студии.</p>
+      <p>Главное отличие фильма в том, что он целиком нарисован от руки. Это первый полностью 2D-проект Pixar, студии, выросшей на компьютерной графике. Салливан считает, что такого непредсказуемого котёнка иначе не сделать: у каждого аниматора рука рисует по-своему, и это придаёт ему живость.</p>
+      <p>Чтобы встроить 2D в рабочий процесс студии, команда придумала собственный конвейер. Кадры раскладывали и ставили камеру, потом по этим заготовкам художники рисовали фоны. Персонажей анимировали отдельным слоем, а затем всё склеивали.</p>
+      <p>Действие происходит в Мишн-Дистрикте Сан-Франциско, где Салливан жила, когда переехала в город. Чтобы увидеть район глазами котёнка, создатели ходили по нему с селфи-палкой у самой земли. Фоны сделаны свободной, живописной манерой, чтобы взгляд оставался на героях, а в звук добавили шум городской электрички BART.</p>
+    </div>
+    <dl>
+      <div><dt>Режиссёр, автор сюжета</dt><dd>Росана Салливан</dd></div>
+      <div><dt>Продюсер</dt><dd>Кэтрин Хендриксон</dd></div>
+      <div><dt>Оператор (камера)</dt><dd>Арджун Рихан</dd></div>
+      <div><dt>Монтаж</dt><dd>Кэти Шефер Бишоп</dd></div>
+      <div><dt>Музыка</dt><dd>Эндрю Хименес</dd></div>
+      <div><dt>Художники-постановщики</dt><dd>Тим Эватт, Билл Коун</dd></div>
+      <div><dt>Супервайзер анимации</dt><dd>Гийом Шартье</dd></div>
+      <div><dt>Дизайн персонажей</dt><dd>Заруи Галастиан</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="alt" id="path">
+  <div class="wrap">
+    <h2>Путь и награды</h2>
+    <p>Фильм сначала показали в кинотеатре, а потом он стал интернет-хитом, и это одна из причин его популярности.</p>
+    <ul class="when">
+      <li><b>18 января 2019</b><span>Премьера в кинотеатре El Capitan в Лос-Анджелесе вместе с короткометражками Purl и Smash and Grab.</span></li>
+      <li><b>18 февраля 2019</b><span>Выход на YouTube-канале Pixar. Позже просмотров стало больше ста миллионов.</span></li>
+      <li><b>12 ноября 2019</b><span>Появление на Disney+ вместе с остальными SparkShorts.</span></li>
+      <li><b>24 января 2020</b><span>Режиссёр получила премию Humanitas Prize за короткометражный фильм.</span></li>
+      <li><b>9 февраля 2020</b><span>Номинация на «Оскар» за лучший анимационный короткометражный фильм. Награду забрал Hair Love.</span></li>
+      <li><b>9 февраля 2024</b><span>Показ в кинотеатрах перед фильмом «Тёрнинг Ред».</span></li>
+    </ul>
+  </div>
+</section>
+<section class="watch" id="watch">
+  <div class="wrap">
+    <h2>Смотреть мультфильм</h2>
+    <p>Kitbull идёт всего девять минут. Нажми кнопку, и мультфильм откроется на VK Видео в новой вкладке.</p>
+    <a class="cta" href="https://vkvideo.ru/video-230238587_456239202" target="_blank" rel="noopener noreferrer">▶ Смотреть на VK Видео</a>
+    <p style="margin-top:22px;font-size:.92rem;color:var(--mute)">Если ссылка перестанет работать, ищи Kitbull на YouTube-канале Pixar или на Disney+.</p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><p>Фанатская страница. Kitbull, его персонажи и кадры принадлежат Pixar Animation Studios / Disney. Сайт неофициальный и некоммерческий.</p></div></footer>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var h=document.querySelector('.hero');
+  function m(e){var t=e.touches?e.touches[0]:e,r=h.getBoundingClientRect();
+    h.style.setProperty('--mx',(t.clientX-r.left)+'px');h.style.setProperty('--my',(t.clientY-r.top)+'px')}
+  h.addEventListener('mousemove',m);h.addEventListener('touchmove',m,{passive:true});
+})();
+</script>
+</body>
+</html>
